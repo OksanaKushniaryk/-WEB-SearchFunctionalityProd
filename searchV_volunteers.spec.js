@@ -19,11 +19,11 @@ describe('searchV', function() {
     const apiResponse = await axios.post('https://api.volunteercentrecounty.org/web-api/project/list', 
       {
         filter: {
-          search: "test",
+          search: "volunteers",
           courtOrderedService: false
         },
         query: {
-          limit: "50",
+          limit: "30",
           offset: "0",
           order: "DESC",
           orderBy: "updated"
@@ -34,7 +34,7 @@ describe('searchV', function() {
           'Accept': 'application/json, text/plain, */*',
           'Accept-Language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7',
           'Content-Type': 'application/json',
-          'Origin': 'https://volunteercentrecounty.org/',
+          'Origin': 'https://volunteercentrecounty.org',
           'Referer': 'https://volunteercentrecounty.org/'
         }
       }
@@ -48,11 +48,11 @@ describe('searchV', function() {
     // Log formatted list of items
     console.log('\nItems sorted by updated date (DESC):')
     items.forEach((item, index) => {
-        console.log(`${index + 1}. Title: ${item.title}, Updated: ${item.communityPartner.updated}`)
+        console.log(`${index + 1}. Title: ${item.title}, Updated: ${item.updated}`)
     })
 
     for (const item of items) {
-      const currentTimestamp = new Date(item.communityPartner.updated)
+      const currentTimestamp = new Date(item.updated)
       if (previousTimestamp && currentTimestamp > previousTimestamp) {
         isSorted = false
         break
@@ -69,7 +69,7 @@ describe('searchV', function() {
     await driver.manage().window().setRect({ width: 1440, height: 900 })
     await driver.findElement(By.xpath("//div/div/div/div[2]/div")).click()
     await driver.findElement(By.xpath("(//input[@type='text'])[2]")).click()
-    await driver.findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys("test")
+    await driver.findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys("volunteers")
     
     // Wait for search results to load
     await driver.sleep(2000)
@@ -77,21 +77,21 @@ describe('searchV', function() {
     // Find all h4 elements with the specified class
     const titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\[60px\\].font-Montserrat.truncate'))
     
-    // Count items with "test" in their title
-    let testCount = 0
+    // Count items with "volunteers" in their title
+    let volunteersCount = 0
     for (const title of titles) {
         const text = await title.getText()
-        if (text.toLowerCase().includes('test')) {
-            testCount++
+        if (text.toLowerCase().includes('volunteers')) {
+            volunteersCount++
         }
     }
     
     // Log UI results
-    console.log(`\nUI Results: Found ${testCount} items with "test" in title`)
+    console.log(`\nUI Results: Found ${volunteersCount} items with "volunteers" in title`)
     
     // Assert both API and UI conditions
     assert.ok(isSorted, 'API results should be sorted by updated date in descending order')
-    assert.ok(testCount > 0, 'Should find at least one item with "test" in title')
+    assert.ok(volunteersCount > 0, 'Should find at least one item with "volunteers" in title')
     assert.ok(items.length > 0, 'API should return at least one item')
   })
 })
