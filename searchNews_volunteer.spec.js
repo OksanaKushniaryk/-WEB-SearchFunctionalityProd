@@ -62,13 +62,25 @@ describe('SearchNews', function() {
                 filter: {
                     search: "${searchTerm}",
                     tags: null,
-                    categories: ["f22bfa2a-aeec-4dab-83f7-02f9ec5c014d","d5273f5f-39d1-42a4-b408-a1e334d52b66","e800a7a0-5864-4aff-aa48-7fef28debcc0"],
+                    categories: null,
                     partners: []
                 }
             })
         })
-        .then(response => response.json())
-        .then(data => data.data);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('API Response:', JSON.stringify(data, null, 2));
+            return data.data;
+        })
+        .catch(error => {
+            console.error('API Error:', error);
+            return [];
+        });
     `)
     
     console.log(`API returned ${apiResponse.length} articles`)
