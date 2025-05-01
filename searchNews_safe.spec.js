@@ -21,9 +21,9 @@ describe('SearchNews', function() {
     const searchInput = await driver.findElement(By.css('input[placeholder="Search"]'))
     await searchInput.click()
     
-    // Clear any existing text and enter the search term
+    // Clear any existing text and enter the search terms
     await searchInput.clear()
-    const searchTerm = "safe"
+    const searchTerm = "centre"
     await searchInput.sendKeys(searchTerm)
     
     // Wait for search results to load and stabilize
@@ -62,13 +62,28 @@ describe('SearchNews', function() {
                 filter: {
                     search: "${searchTerm}",
                     tags: null,
-                    categories: ["f22bfa2a-aeec-4dab-83f7-02f9ec5c014d","d5273f5f-39d1-42a4-b408-a1e334d52b66","e800a7a0-5864-4aff-aa48-7fef28debcc0"],
+                    categories: null,
                     partners: []
                 }
             })
         })
-        .then(response => response.json())
-        .then(data => data.data);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('API call failed: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (!data.data) {
+                console.error('API response structure:', data);
+                throw new Error('Unexpected API response structure');
+            }
+            return data.data;
+        })
+        .catch(error => {
+            console.error('API call error:', error);
+            throw error;
+        });
     `)
     
     console.log(`API returned ${apiResponse.length} articles`)
