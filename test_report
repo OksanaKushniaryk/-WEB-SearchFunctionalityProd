@@ -1,0 +1,212 @@
+SearchCP
+Items sorted by random (ASC):
+1. Title: State College Borough
+2. Title: State College Food Bank
+3. Title: State College Lions Foundation
+4. Title: Downtown State College Improvement District
+5. Title: AAUW State College
+6. Title: State College Area Meals on Wheels
+    ✔ SearchCP (8576ms)
+
+  SearchCP
+Items sorted by random (ASC):
+1. Title: Appalachian Food Works
+2. Title: Think We, not Me Food Growing Program
+3. Title: State College Food Bank
+    ✔ SearchCP (8312ms)
+
+  SearchCP
+Items sorted by random (ASC):
+1. Title: Partnership for Penns Valley Library Services
+    ✔ SearchCP (8430ms)
+
+  SearchDG
+Number of items with "amazon" in title: 6
+
+Items sorted by updated date (DESC):
+1. Title: Amazon Wishlist, Updated: 2025-04-18T21:30:49.330Z
+2. Title: Amazon Wishlist, Updated: 2025-04-18T21:28:53.915Z
+3. Title: Amazon Wishlist, Updated: 2025-04-18T21:28:23.849Z
+4. Title: Amazon Wishlist, Updated: 2025-04-18T21:03:18.937Z
+5. Title: Amazon Wishlist, Updated: 2025-04-18T20:38:31.024Z
+6. Title: Amazon Wishlist, Updated: 2025-04-05T18:49:09.677Z
+
+Sorting verification completed successfully - all items are correctly sorted by updated date in descending order
+    ✔ SearchDG (8785ms)
+
+  SearchDG
+Number of items with "wishlist" in title: 9
+
+Items sorted by updated date (DESC):
+1. Title: Amazon Wishlist, Updated: 2025-04-18T21:30:49.330Z
+2. Title: Walmart Wishlist, Updated: 2025-04-18T21:30:44.840Z
+3. Title: Amazon Wishlist, Updated: 2025-04-18T21:28:53.915Z
+4. Title: Chewy Wishlist, Updated: 2025-04-18T21:28:30.214Z
+5. Title: Amazon Wishlist, Updated: 2025-04-18T21:28:23.849Z
+6. Title: Chewy Wishlist, Updated: 2025-04-18T21:04:46.530Z
+7. Title: Amazon Wishlist, Updated: 2025-04-18T21:03:18.937Z
+8. Title: Amazon Wishlist, Updated: 2025-04-18T20:38:31.024Z
+9. Title: Amazon Wishlist, Updated: 2025-04-05T18:49:09.677Z
+
+Sorting verification completed successfully - all items are correctly sorted by updated date in descending order
+    ✔ SearchDG (8699ms)
+
+  SearchNews
+Found 5 blog items on the page
+Found title: Centre Safe is 50! Join us May 28, 2025 from noon to 2 PM for lunch!
+Found title: Volunteer Centre County brings groups together
+Found title: Volunteer Centre County was on TV!
+Found title: Volunteer Centre County is in the News!
+Found title: Find Ways to Volunteer and Give Back in Centre County
+API returned 6 articles
+Matched article: Centre Safe is 50! Join us May 28, 2025 from noon to 2 PM for lunch! with lastRefreshed: 2025-04-23
+Matched article: Volunteer Centre County brings groups together with lastRefreshed: 2025-04-16
+Matched article: Volunteer Centre County was on TV! with lastRefreshed: 2025-04-16
+Matched article: Volunteer Centre County is in the News! with lastRefreshed: 2025-04-16
+Matched article: Find Ways to Volunteer and Give Back in Centre County with lastRefreshed: 2024-01-10
+
+Search results sorted by lastRefreshed (DESC):
+1. Title: Centre Safe is 50! Join us May 28, 2025 from noon to 2 PM for lunch!, lastRefreshed: 2025-04-23
+2. Title: Volunteer Centre County brings groups together, lastRefreshed: 2025-04-16
+3. Title: Volunteer Centre County was on TV!, lastRefreshed: 2025-04-16
+4. Title: Volunteer Centre County is in the News!, lastRefreshed: 2025-04-16
+5. Title: Find Ways to Volunteer and Give Back in Centre County, lastRefreshed: 2024-01-10
+    ✔ SearchNews (8781ms)
+
+  SearchNews
+Found 10 blog items on the page
+Found title: Breaking Stereotypes: Trends in Volunteering During Retirement
+Found title: Youth volunteerism creates a positive impact in the community
+Found title: Volunteer Centre County brings groups together
+Found title: Volunteer Centre County was on TV!
+Found title: Volunteer Centre County is in the News!
+Found title: Getting Volunteer Clearances
+Found title: Why Volunteer?
+Found title: Beyond National Volunteer Month: Sustaining Engagement
+Found title: Find Ways to Volunteer and Give Back in Centre County
+Found title: Maximize Your Community Impact by Volunteering
+API returned 14 articles
+Matched article: Breaking Stereotypes: Trends in Volunteering During Retirement with lastRefreshed: 2025-04-16
+Matched article: Youth volunteerism creates a positive impact in the community with lastRefreshed: 2025-04-16
+Matched article: Volunteer Centre County brings groups together with lastRefreshed: 2025-04-16
+Matched article: Volunteer Centre County was on TV! with lastRefreshed: 2025-04-16
+Matched article: Volunteer Centre County is in the News! with lastRefreshed: 2025-04-16
+Matched article: Getting Volunteer Clearances with lastRefreshed: 2025-04-16
+Matched article: Why Volunteer? with lastRefreshed: 2025-04-16
+Matched article: Beyond National Volunteer Month: Sustaining Engagement with lastRefreshed: 2024-05-02
+Matched article: Find Ways to Volunteer and Give Back in Centre County with lastRefreshed: 2024-01-10
+Matched article: Maximize Your Community Impact by Volunteering with lastRefreshed: 2024-01-10
+
+Search results sorted by lastRefreshed (DESC):
+1. Title: Breaking Stereotypes: Trends in Volunteering During Retirement, lastRefreshed: 2025-04-16
+2. Title: Youth volunteerism creates a positive impact in the community, lastRefreshed: 2025-04-16
+3. Title: Volunteer Centre County brings groups together, lastRefreshed: 2025-04-16
+4. Title: Volunteer Centre County was on TV!, lastRefreshed: 2025-04-16
+5. Title: Volunteer Centre County is in the News!, lastRefreshed: 2025-04-16
+6. Title: Getting Volunteer Clearances, lastRefreshed: 2025-04-16
+7. Title: Why Volunteer?, lastRefreshed: 2025-04-16
+8. Title: Beyond National Volunteer Month: Sustaining Engagement, lastRefreshed: 2024-05-02
+9. Title: Find Ways to Volunteer and Give Back in Centre County, lastRefreshed: 2024-01-10
+10. Title: Maximize Your Community Impact by Volunteering, lastRefreshed: 2024-01-10
+    ✔ SearchNews (8599ms)
+
+  searchV
+
+Items sorted by updated date (DESC):
+1. Title: Set Up and Clean Up Help Needed, Updated: 2025-04-22T02:22:59.570Z
+2. Title: Help with Outdoor Projects, Updated: 2025-04-18T21:55:42.218Z
+3. Title: Ushers/Front of House Helpers, Updated: 2025-04-18T21:54:55.247Z
+4. Title: Help Ensure the Ethics & Safety of Penn State Research, Updated: 2025-04-18T21:49:55.363Z
+5. Title: Help needed in the gardens and greenhouse, Updated: 2025-04-17T02:58:57.699Z
+
+API Response: Found 5 items
+API Results are sorted by updated date in descending order: true
+
+UI Results: Found 5 items with "help" in title
+    ✔ searchV (9134ms)
+
+  searchV
+
+Items sorted by updated date (DESC):
+1. Title: J.A.M. Fest Volunteers Needed, Updated: 2025-04-23T20:01:44.373Z
+2. Title: Set Up and Clean Up Help Needed, Updated: 2025-04-22T02:22:59.570Z
+3. Title: BIGS needed!, Updated: 2025-04-18T21:57:05.550Z
+4. Title: Teachers/Tutors Needed, Updated: 2025-04-18T21:55:50.233Z
+5. Title: Volunteers Needed, Updated: 2025-04-18T21:55:46.653Z
+6. Title: History Buffs and Gardeners Needed, Updated: 2025-04-18T21:55:38.590Z
+7. Title: Furniture Repair/Restoration Instructors Needed, Updated: 2025-04-18T21:55:19.740Z
+8. Title: Dog / Cat Fosters Needed, Updated: 2025-04-18T21:55:09.078Z
+9. Title: Youth Aid Panel Members Needed, Updated: 2025-04-18T21:50:57.880Z
+10. Title: Fosters for Beagles Needed, Updated: 2025-04-18T21:50:50.458Z
+11. Title: Dog Walkers Needed, Updated: 2025-04-18T21:50:46.551Z
+12. Title: Official Prison Visitors - Prison Monitors Needed, Updated: 2025-04-18T21:50:27.966Z
+13. Title: Cemetery Volunteers Needed, Updated: 2025-04-18T21:50:18.594Z
+14. Title: MNH Toftrees Ambassadors Needed, Updated: 2025-04-18T21:48:22.159Z
+15. Title: Help needed in the gardens and greenhouse, Updated: 2025-04-17T02:58:57.699Z
+16. Title: Membership Committee Chair Needed - Board Positon, Updated: 2025-04-15T17:14:56.113Z
+17. Title: Summer Games Volunteers Needed, Updated: 2025-04-08T01:34:38.752Z
+18. Title: Ironman 70.3 Volunteers Needed, Updated: 2025-03-25T21:57:51.495Z
+
+API Response: Found 18 items
+API Results are sorted by updated date in descending order: true
+
+UI Results: Found 15 items with "need" in title
+    ✔ searchV (8573ms)
+
+  searchV
+
+Items sorted by updated date (DESC):
+1. Title: J.A.M. Fest Volunteers Needed, Updated: 2025-04-23T20:01:44.373Z
+2. Title: Volunteer at the 63rd AAUW State College Used Book Sale, Updated: 2025-04-20T22:24:01.302Z
+3. Title: Volunteers Needed, Updated: 2025-04-18T21:55:46.653Z
+4. Title: Outlet Store Volunteer, Updated: 2025-04-18T21:55:16.079Z
+5. Title: Garden, Kitchen, and Market Volunteers, Updated: 2025-04-18T21:51:09.514Z
+6. Title: Volunteer Grief Support Group Facilitators, Updated: 2025-04-18T21:51:05.751Z
+7. Title: Day Shelter Volunteers, Updated: 2025-04-18T21:50:42.505Z
+8. Title: ReStore Volunteers - Various, Updated: 2025-04-18T21:50:38.748Z
+9. Title: Exhibits Volunteer, Updated: 2025-04-18T21:50:23.468Z
+10. Title: Cemetery Volunteers Needed, Updated: 2025-04-18T21:50:18.594Z
+11. Title: Road to Recovery Volunteer Drivers, Updated: 2025-04-18T21:50:14.702Z
+12. Title: Become a Neighboring Volunteer!, Updated: 2025-04-18T21:50:08.422Z
+13. Title: Emergency Department Volunteer, Updated: 2025-04-18T21:50:00.212Z
+14. Title: Volunteer Tutor, Updated: 2025-04-18T21:49:31.974Z
+15. Title: General Volunteering, Updated: 2025-04-18T21:49:27.811Z
+16. Title: Volunteers Wanted, Updated: 2025-04-18T21:49:23.431Z
+17. Title: Volunteer Hotline Counselor/Advocate, Updated: 2025-04-18T21:47:23.694Z
+18. Title: Summer Games Volunteers Needed, Updated: 2025-04-08T01:34:38.752Z
+19. Title: Ironman 70.3 Volunteers Needed, Updated: 2025-03-25T21:57:51.495Z
+
+API Response: Found 19 items
+API Results are sorted by updated date in descending order: true
+
+UI Results: Found 15 items with "volunteer" in title
+    ✔ searchV (8921ms)
+
+  searchV
+
+Items sorted by updated date (DESC):
+1. Title: J.A.M. Fest Volunteers Needed, Updated: 2025-04-23T20:01:44.373Z
+2. Title: Volunteers Needed, Updated: 2025-04-18T21:55:46.653Z
+3. Title: Garden, Kitchen, and Market Volunteers, Updated: 2025-04-18T21:51:09.514Z
+4. Title: Day Shelter Volunteers, Updated: 2025-04-18T21:50:42.505Z
+5. Title: ReStore Volunteers - Various, Updated: 2025-04-18T21:50:38.748Z
+6. Title: Cemetery Volunteers Needed, Updated: 2025-04-18T21:50:18.594Z
+7. Title: Volunteers Wanted, Updated: 2025-04-18T21:49:23.431Z
+8. Title: Summer Games Volunteers Needed, Updated: 2025-04-08T01:34:38.752Z
+9. Title: Ironman 70.3 Volunteers Needed, Updated: 2025-03-25T21:57:51.495Z
+
+API Response: Found 9 items
+API Results are sorted by updated date in descending order: true
+
+UI Results: Found 9 items with "volunteers" in title
+    ✔ searchV (8995ms)
+
+  SearchWH1
+API returned 1 jobs
+
+Found 1 items containing "educator" (sorted by lastRefreshed DESC):
+1. Prevention Educator (Last Refreshed: 2025-04-17)
+    ✔ SearchWH1 (8314ms)
+
+
+  12 passing (2m)
