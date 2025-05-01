@@ -1,0 +1,985 @@
+{
+  "stats": {
+    "suites": 12,
+    "tests": 12,
+    "passes": 12,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-01T11:29:46.553Z",
+    "end": "2025-05-01T11:32:01.230Z",
+    "duration": 134677,
+    "testsRegistered": 12,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "297c4031-d08e-4bdf-b7d0-2950bcb0769a",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "de4c37a7-b0fc-49aa-b7b2-ed6f56d62972",
+          "title": "SearchCP",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchCP_college.spec.js",
+          "file": "/searchCP_college.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SearchCP\"",
+              "fullTitle": "SearchCP \"before each\" hook in \"SearchCP\"",
+              "timedOut": false,
+              "duration": 5806,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "027441d8-1460-420f-8483-6275d14104d2",
+              "parentUUID": "de4c37a7-b0fc-49aa-b7b2-ed6f56d62972",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SearchCP\"",
+              "fullTitle": "SearchCP \"after each\" hook in \"SearchCP\"",
+              "timedOut": false,
+              "duration": 143,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "7e9f0a3c-37b0-4eb5-a515-5c905d1dfb7c",
+              "parentUUID": "de4c37a7-b0fc-49aa-b7b2-ed6f56d62972",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "SearchCP",
+              "fullTitle": "SearchCP SearchCP",
+              "timedOut": false,
+              "duration": 10557,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  // Make API call to get sorted data\n  const response = await axios.post('https://api.volunteercentrecounty.org/web-api/community-partner/list', {\n    filter: { search: \"college\" },\n    query: {\n      limit: \"50\",\n      offset: \"0\",\n      order: \"ASC\",\n      orderBy: \"random\",\n      cursor: 3\n    }\n  }, {\n    headers: {\n      'Accept': 'application/json, text/plain, */*',\n      'Content-Type': 'application/json',\n      'Origin': 'https://volunteercentrecounty.org/'\n    }\n  });\n  // Verify sorting parameters in response\n  assert.strictEqual(response.data.order, \"ASC\", \"Order should be ASC\");\n  assert.strictEqual(response.data.orderBy, \"random\", \"OrderBy should be random\");\n  // Navigate to the page\n  await driver.get(\"https://volunteercentrecounty.org/community-partners\")\n  await driver.manage().window().setRect({ width: 1440, height: 900 })\n  \n  // Wait for the page to load\n  await driver.wait(until.elementLocated(By.css('input[type=\"text\"]')), 10000)\n  \n  // Find the search input using a more reliable selector\n  const searchInput = await driver.findElement(By.css('input[type=\"text\"]'))\n  await searchInput.click()\n  await searchInput.sendKeys(\"college\")\n  \n  // Wait for search results to load\n  await driver.sleep(2000)\n  \n  // Find all h4 elements with the specified class\n  const titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n  \n  // Get titles from the page\n  const pageTitles = []\n  for (const title of titles) {\n      const text = await title.getText()\n      pageTitles.push(text)\n  }\n  // Get titles from API response\n  const apiTitles = response.data.data.map(item => item.name)\n  console.log('Items sorted by random (ASC):')\n  apiTitles.forEach((title, index) => {\n      console.log(`${index + 1}. Title: ${title}`)\n  })\n  // Verify that we have items in the response\n  assert.ok(apiTitles.length > 0, \"API response should contain items\")\n  \n} catch (error) {\n  console.error('Test failed:', error)\n  throw error\n}",
+              "err": {},
+              "uuid": "5900e41f-ab9f-47ba-befc-3ab0e590dbd9",
+              "parentUUID": "de4c37a7-b0fc-49aa-b7b2-ed6f56d62972",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5900e41f-ab9f-47ba-befc-3ab0e590dbd9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 10557,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "b1881b66-8d1f-4cf2-b2e8-f39397cec640",
+          "title": "SearchCP",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchCP_food.spec.js",
+          "file": "/searchCP_food.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SearchCP\"",
+              "fullTitle": "SearchCP \"before each\" hook in \"SearchCP\"",
+              "timedOut": false,
+              "duration": 1887,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "824e41c1-0456-4bd0-bfcf-4ac3dbc1aeed",
+              "parentUUID": "b1881b66-8d1f-4cf2-b2e8-f39397cec640",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SearchCP\"",
+              "fullTitle": "SearchCP \"after each\" hook in \"SearchCP\"",
+              "timedOut": false,
+              "duration": 136,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "cd889ec5-d05a-4360-8411-1cf5ac55525f",
+              "parentUUID": "b1881b66-8d1f-4cf2-b2e8-f39397cec640",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "SearchCP",
+              "fullTitle": "SearchCP SearchCP",
+              "timedOut": false,
+              "duration": 8276,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  // Make API call to get sorted data\n  const response = await axios.post('https://api.volunteercentrecounty.org/web-api/community-partner/list', {\n    filter: { search: \"food\" },\n    query: {\n      limit: \"50\",\n      offset: \"0\",\n      order: \"ASC\",\n      orderBy: \"random\",\n      cursor: 3\n    }\n  }, {\n    headers: {\n      'Accept': 'application/json, text/plain, */*',\n      'Content-Type': 'application/json',\n      'Origin': 'https://volunteercentrecounty.org/'\n    }\n  });\n  // Verify sorting parameters in response\n  assert.strictEqual(response.data.order, \"ASC\", \"Order should be ASC\");\n  assert.strictEqual(response.data.orderBy, \"random\", \"OrderBy should be random\");\n  // Navigate to the page\n  await driver.get(\"https://volunteercentrecounty.org/community-partners\")\n  await driver.manage().window().setRect({ width: 1440, height: 900 })\n  \n  // Wait for the page to load\n  await driver.wait(until.elementLocated(By.css('input[type=\"text\"]')), 10000)\n  \n  // Find the search input using a more reliable selector\n  const searchInput = await driver.findElement(By.css('input[type=\"text\"]'))\n  await searchInput.click()\n  await searchInput.sendKeys(\"food\")\n  \n  // Wait for search results to load\n  await driver.sleep(2000)\n  \n  // Find all h4 elements with the specified class\n  const titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n  \n  // Get titles from the page\n  const pageTitles = []\n  for (const title of titles) {\n      const text = await title.getText()\n      pageTitles.push(text)\n  }\n  // Get titles from API response\n  const apiTitles = response.data.data.map(item => item.name)\n  console.log('Items sorted by random (ASC):')\n  apiTitles.forEach((title, index) => {\n      console.log(`${index + 1}. Title: ${title}`)\n  })\n  // Verify that we have items in the response\n  assert.ok(apiTitles.length > 0, \"API response should contain items\")\n  \n} catch (error) {\n  console.error('Test failed:', error)\n  throw error\n}",
+              "err": {},
+              "uuid": "bd705d5c-ccc8-4508-a170-4bec3dd8ba10",
+              "parentUUID": "b1881b66-8d1f-4cf2-b2e8-f39397cec640",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bd705d5c-ccc8-4508-a170-4bec3dd8ba10"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8276,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "27a9b58c-d0f3-4b30-9521-18c93ce8cf13",
+          "title": "SearchCP",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchCP_partner.spec.js",
+          "file": "/searchCP_partner.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SearchCP\"",
+              "fullTitle": "SearchCP \"before each\" hook in \"SearchCP\"",
+              "timedOut": false,
+              "duration": 1842,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "f6a936e1-29d2-4181-a945-255c6a77bb6e",
+              "parentUUID": "27a9b58c-d0f3-4b30-9521-18c93ce8cf13",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SearchCP\"",
+              "fullTitle": "SearchCP \"after each\" hook in \"SearchCP\"",
+              "timedOut": false,
+              "duration": 134,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "4c8b9962-234e-44b5-9ce5-5c58f072ff74",
+              "parentUUID": "27a9b58c-d0f3-4b30-9521-18c93ce8cf13",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "SearchCP",
+              "fullTitle": "SearchCP SearchCP",
+              "timedOut": false,
+              "duration": 8834,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  // Make API call to get sorted data\n  const response = await axios.post('https://api.volunteercentrecounty.org/web-api/community-partner/list', {\n    filter: { search: \"partner\" },\n    query: {\n      limit: \"30\",\n      offset: \"0\",\n      order: \"ASC\",\n      orderBy: \"random\",\n      cursor: 3\n    }\n  }, {\n    headers: {\n      'Accept': 'application/json, text/plain, */*',\n      'Content-Type': 'application/json',\n      'Origin': 'https://volunteercentrecounty.org/'\n    }\n  });\n  // Verify sorting parameters in response\n  assert.strictEqual(response.data.order, \"ASC\", \"Order should be ASC\");\n  assert.strictEqual(response.data.orderBy, \"random\", \"OrderBy should be random\");\n  // Navigate to the page\n  await driver.get(\"https://volunteercentrecounty.org/community-partners\")\n  await driver.manage().window().setRect({ width: 1440, height: 900 })\n  \n  // Wait for the page to load\n  await driver.wait(until.elementLocated(By.css('input[type=\"text\"]')), 10000)\n  \n  // Find the search input using a more reliable selector\n  const searchInput = await driver.findElement(By.css('input[type=\"text\"]'))\n  await searchInput.click()\n  await searchInput.sendKeys(\"partner\")\n  \n  // Wait for search results to load\n  await driver.sleep(2000)\n  \n  // Find all h4 elements with the specified class\n  const titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n  \n  // Get titles from the page\n  const pageTitles = []\n  for (const title of titles) {\n      const text = await title.getText()\n      pageTitles.push(text)\n  }\n  // Get titles from API response\n  const apiTitles = response.data.data.map(item => item.name)\n  console.log('Items sorted by random (ASC):')\n  apiTitles.forEach((title, index) => {\n      console.log(`${index + 1}. Title: ${title}`)\n  })\n  // Verify that we have items in the response\n  assert.ok(apiTitles.length > 0, \"API response should contain items\")\n  \n} catch (error) {\n  console.error('Test failed:', error)\n  throw error\n}",
+              "err": {},
+              "uuid": "1460edea-0b61-483a-9d97-2b18fde060ba",
+              "parentUUID": "27a9b58c-d0f3-4b30-9521-18c93ce8cf13",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1460edea-0b61-483a-9d97-2b18fde060ba"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8834,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "2f8021dd-806e-44c7-9694-27801361fb2e",
+          "title": "SearchDG",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchDG_amazon.spec.js",
+          "file": "/searchDG_amazon.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SearchDG\"",
+              "fullTitle": "SearchDG \"before each\" hook in \"SearchDG\"",
+              "timedOut": false,
+              "duration": 1952,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "fcb64022-4574-40aa-a514-668954967728",
+              "parentUUID": "2f8021dd-806e-44c7-9694-27801361fb2e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SearchDG\"",
+              "fullTitle": "SearchDG \"after each\" hook in \"SearchDG\"",
+              "timedOut": false,
+              "duration": 138,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "1353bc11-53ba-4885-9660-1fded4de17c8",
+              "parentUUID": "2f8021dd-806e-44c7-9694-27801361fb2e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "SearchDG",
+              "fullTitle": "SearchDG SearchDG",
+              "timedOut": false,
+              "duration": 8485,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Add sorting parameters to the URL\nawait driver.get(\"https://volunteercentrecounty.org/donations-needed?order=DESC&orderBy=updated\")\nawait driver.manage().window().setRect({ width: 1440, height: 900 })\nawait driver.findElement(By.xpath(\"(//input[@type=\\'text\\'])[2]\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type=\\'text\\'])[2]\")).sendKeys(\"amazon\")\n\n// Wait for search results to load\nawait driver.sleep(2000)\n\n// Find all h4 elements with the specified class\nconst titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n\n// Count items with exact \"amazon\" in their title\nlet amazonCount = 0\nfor (const title of titles) {\n    const text = await title.getText()\n    if (text.toLowerCase().includes('amazon')) {\n        amazonCount++\n    }\n}\n\nconsole.log(`Number of items with \"amazon\" in title: ${amazonCount}`)\n// Verify sorting by checking API response\nconst response = await axios.post('https://api.volunteercentrecounty.org/web-api/need/list', \n    {\n        filter: { search: \"amazon\" },\n        query: {\n            limit: \"30\",\n            offset: \"0\",\n            order: \"DESC\",\n            orderBy: \"updated\"\n        }\n    },\n    {\n        headers: {\n            'Accept': 'application/json, text/plain, */*',\n            'Accept-Language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7',\n            'Connection': 'keep-alive',\n            'Content-Type': 'application/json',\n            'Origin': 'https://volunteercentrecounty.org/',\n            'Referer': 'https://volunteercentrecounty.org/',\n            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',\n            'sec-ch-ua': '\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"',\n            'sec-ch-ua-mobile': '?0',\n            'sec-ch-ua-platform': '\"macOS\"'\n        }\n    }\n)\n\nconst items = response.data.data\n\n// Log all items with their update dates for verification\nconsole.log('\\nItems sorted by updated date (DESC):')\nitems.forEach((item, index) => {\n    console.log(`${index + 1}. Title: ${item.title}, Updated: ${item.updated}`)\n})\n\n// Verify items are sorted by updated date in descending order\nlet previousDate = null\nfor (const item of items) {\n    const currentDate = new Date(item.updated)\n    \n    if (previousDate) {\n        assert(\n            currentDate <= previousDate,\n            `Items are not sorted in descending order by update date:\\nCurrent: ${item.title} (${item.updated})\\nPrevious: ${previousDate.toISOString()}`\n        )\n    }\n    \n    previousDate = currentDate\n}\nconsole.log('\\nSorting verification completed successfully - all items are correctly sorted by updated date in descending order')",
+              "err": {},
+              "uuid": "716f518d-2343-4b65-82e2-ebd6be9955d4",
+              "parentUUID": "2f8021dd-806e-44c7-9694-27801361fb2e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "716f518d-2343-4b65-82e2-ebd6be9955d4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8485,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "bb8138e4-558b-496f-b410-8887cc5c9164",
+          "title": "SearchDG",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchDG_wishlist.spec.js",
+          "file": "/searchDG_wishlist.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SearchDG\"",
+              "fullTitle": "SearchDG \"before each\" hook in \"SearchDG\"",
+              "timedOut": false,
+              "duration": 2041,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "bc1a8a45-a3b1-4a67-9daf-b68be7344afc",
+              "parentUUID": "bb8138e4-558b-496f-b410-8887cc5c9164",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SearchDG\"",
+              "fullTitle": "SearchDG \"after each\" hook in \"SearchDG\"",
+              "timedOut": false,
+              "duration": 127,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "c8aff735-c2a0-4ae0-822e-83f7c3f7b2ac",
+              "parentUUID": "bb8138e4-558b-496f-b410-8887cc5c9164",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "SearchDG",
+              "fullTitle": "SearchDG SearchDG",
+              "timedOut": false,
+              "duration": 8759,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  // Add sorting parameters to the URL\n  await driver.get(\"https://volunteercentrecounty.org/donations-needed?order=DESC&orderBy=updated\")\n  await driver.manage().window().setRect({ width: 1440, height: 900 })\n  await driver.findElement(By.xpath(\"(//input[@type=\\'text\\'])[2]\")).click()\n  await driver.findElement(By.xpath(\"(//input[@type=\\'text\\'])[2]\")).sendKeys(\"wishlist\")\n  \n  // Wait for search results to load\n  await driver.sleep(2000)\n  \n  // Find all h4 elements with the specified class\n  const titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n  \n  // Count items with exact \"wishlist\" in their title\n  let wishlistCount = 0\n  for (const title of titles) {\n      const text = await title.getText()\n      if (text.toLowerCase().includes('wishlist')) {\n          wishlistCount++\n      }\n  }\n  \n  console.log(`Number of items with \"wishlist\" in title: ${wishlistCount}`)\n  // Verify sorting by checking API response\n  const response = await axios.post('https://api.volunteercentrecounty.org/web-api/need/list', \n      {\n          filter: { search: \"wishlist\" },\n          query: {\n              limit: \"30\",\n              offset: \"0\",\n              order: \"DESC\",\n              orderBy: \"updated\"\n          }\n      },\n      {\n          headers: {\n              'Accept': 'application/json, text/plain, */*',\n              'Accept-Language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7',\n              'Connection': 'keep-alive',\n              'Content-Type': 'application/json',\n              'Origin': 'https://volunteercentrecounty.org/',\n              'Referer': 'https://volunteercentrecounty.org/',\n              'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',\n              'sec-ch-ua': '\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"',\n              'sec-ch-ua-mobile': '?0',\n              'sec-ch-ua-platform': '\"macOS\"'\n          }\n      }\n  )\n  \n  const items = response.data.data\n  \n  // Log all items with their update dates for verification\n  console.log('\\nItems sorted by updated date (DESC):')\n  items.forEach((item, index) => {\n      console.log(`${index + 1}. Title: ${item.title}, Updated: ${item.updated}`)\n  })\n  \n  // Verify items are sorted by updated date in descending order\n  let previousDate = null\n  for (const item of items) {\n      const currentDate = new Date(item.updated)\n      \n      if (previousDate) {\n          assert(\n              currentDate <= previousDate,\n              `Items are not sorted in descending order by update date:\\nCurrent: ${item.title} (${item.updated})\\nPrevious: ${previousDate.toISOString()}`\n          )\n      }\n      \n      previousDate = currentDate\n  }\n  console.log('\\nSorting verification completed successfully - all items are correctly sorted by updated date in descending order')\n} catch (error) {\n  console.error('Test failed:', error)\n  throw error\n}",
+              "err": {},
+              "uuid": "ad89ba0c-8bee-486f-bbe8-2b4a9921c628",
+              "parentUUID": "bb8138e4-558b-496f-b410-8887cc5c9164",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ad89ba0c-8bee-486f-bbe8-2b4a9921c628"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8759,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "66b16c75-697a-44e1-929e-b3b23dd86774",
+          "title": "SearchNews",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchNews_centre.spec.js",
+          "file": "/searchNews_centre.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SearchNews\"",
+              "fullTitle": "SearchNews \"before each\" hook in \"SearchNews\"",
+              "timedOut": false,
+              "duration": 1768,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "a02cd6d2-c614-4b70-9ab1-d4bb4bcad122",
+              "parentUUID": "66b16c75-697a-44e1-929e-b3b23dd86774",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SearchNews\"",
+              "fullTitle": "SearchNews \"after each\" hook in \"SearchNews\"",
+              "timedOut": false,
+              "duration": 142,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "53a1aa7b-a959-465b-971f-3a2c55e05a8e",
+              "parentUUID": "66b16c75-697a-44e1-929e-b3b23dd86774",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "SearchNews",
+              "fullTitle": "SearchNews SearchNews",
+              "timedOut": false,
+              "duration": 8403,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get(\"https://volunteercentrecounty.org/blog\")\nawait driver.manage().window().setRect({ width: 1440, height: 900 })\n\n// Wait for the page to load and search input to be visible\nawait driver.wait(until.elementLocated(By.css('input[placeholder=\"Search\"]')), 10000)\nconst searchInput = await driver.findElement(By.css('input[placeholder=\"Search\"]'))\nawait searchInput.click()\n\n// Clear any existing text and enter the search terms\nawait searchInput.clear()\nconst searchTerm = \"centre\"\nawait searchInput.sendKeys(searchTerm)\n\n// Wait for search results to load and stabilize\nawait driver.wait(until.elementLocated(By.css('app-blog-list-item')), 10000)\nawait driver.sleep(2000) // Additional wait for results to stabilize\n\n// Get all titles first to avoid stale elements\nconst titles = []\nconst items = await driver.findElements(By.css('app-blog-list-item'))\nconsole.log(`Found ${items.length} blog items on the page`)\n\nfor (const item of items) {\n    try {\n        const title = await item.findElement(By.css('h4.font-semibold.text-24pxlh30px.font-Montserrat')).getText()\n        titles.push(title)\n        console.log(`Found title: ${title}`)\n    } catch (error) {\n        console.log(`Error getting title: ${error.message}`)\n    }\n}\n\n// Now make a single API call to get all articles\nconst apiResponse = await driver.executeScript(`\n    return fetch('https://api.volunteercentrecounty.org/web-api/article/list', {\n        method: 'POST',\n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify({\n            query: {\n                limit: \"50\",\n                offset: \"0\",\n                order: \"DESC\",\n                orderBy: \"lastRefreshed\"\n            },\n            filter: {\n                search: \"${searchTerm}\",\n                tags: null,\n                categories: null,\n                partners: []\n            }\n        })\n    })\n    .then(response => {\n        if (!response.ok) {\n            throw new Error('API call failed: ' + response.status);\n        }\n        return response.json();\n    })\n    .then(data => {\n        if (!data.data) {\n            console.error('API response structure:', data);\n            throw new Error('Unexpected API response structure');\n        }\n        return data.data;\n    })\n    .catch(error => {\n        console.error('API call error:', error);\n        throw error;\n    });\n`)\n\nconsole.log(`API returned ${apiResponse.length} articles`)\n\nconst itemData = []\nfor (const title of titles) {\n    const matchingArticle = apiResponse.find(article => \n        article.title.toLowerCase().includes(title.toLowerCase()) || \n        title.toLowerCase().includes(article.title.toLowerCase())\n    )\n    \n    if (matchingArticle) {\n        itemData.push({ \n            title: matchingArticle.title, \n            lastRefreshed: matchingArticle.lastRefreshed \n        })\n        console.log(`Matched article: ${matchingArticle.title} with lastRefreshed: ${matchingArticle.lastRefreshed}`)\n    } else {\n        console.log(`No matching article found in API for title: ${title}`)\n    }\n}\n\n// Log the results\nconsole.log('\\nSearch results sorted by lastRefreshed (DESC):')\nitemData.forEach((item, index) => {\n    console.log(`${index + 1}. Title: ${item.title}, lastRefreshed: ${item.lastRefreshed}`)\n})\n\n// Verify sorting\nfor (let i = 0; i < itemData.length - 1; i++) {\n    const currentDate = new Date(itemData[i].lastRefreshed)\n    const nextDate = new Date(itemData[i + 1].lastRefreshed)\n    assert.ok(currentDate >= nextDate, \n        `Items are not sorted correctly by lastRefreshed. ${itemData[i].title} (${itemData[i].lastRefreshed}) should come before ${itemData[i + 1].title} (${itemData[i + 1].lastRefreshed})`)\n}\n\n// Assert that we found at least one item\nassert.ok(itemData.length > 0, `No items found with \"${searchTerm}\" in title`)",
+              "err": {},
+              "uuid": "16ce0632-b6ea-4f49-a39f-b13cd3193cb9",
+              "parentUUID": "66b16c75-697a-44e1-929e-b3b23dd86774",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "16ce0632-b6ea-4f49-a39f-b13cd3193cb9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8403,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "11e232ef-a7c8-462f-b4aa-915902f801c5",
+          "title": "SearchNews",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchNews_volunteer.spec.js",
+          "file": "/searchNews_volunteer.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SearchNews\"",
+              "fullTitle": "SearchNews \"before each\" hook in \"SearchNews\"",
+              "timedOut": false,
+              "duration": 1944,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "a4998153-8523-4704-94e9-afc303df9828",
+              "parentUUID": "11e232ef-a7c8-462f-b4aa-915902f801c5",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SearchNews\"",
+              "fullTitle": "SearchNews \"after each\" hook in \"SearchNews\"",
+              "timedOut": false,
+              "duration": 131,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "9afed14a-3287-4843-8302-48e156310b4d",
+              "parentUUID": "11e232ef-a7c8-462f-b4aa-915902f801c5",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "SearchNews",
+              "fullTitle": "SearchNews SearchNews",
+              "timedOut": false,
+              "duration": 9994,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get(\"https://volunteercentrecounty.org/blog\")\nawait driver.manage().window().setRect({ width: 1440, height: 900 })\n\n// Wait for the page to load and search input to be visible\nawait driver.wait(until.elementLocated(By.css('input[placeholder=\"Search\"]')), 10000)\nconst searchInput = await driver.findElement(By.css('input[placeholder=\"Search\"]'))\nawait searchInput.click()\n\n// Clear any existing text and enter the search term\nawait searchInput.clear()\nconst searchTerm = \"volunteer\"\nawait searchInput.sendKeys(searchTerm)\n\n// Wait for search results to load and stabilize\nawait driver.wait(until.elementLocated(By.css('app-blog-list-item')), 10000)\nawait driver.sleep(2000) // Additional wait for results to stabilize\n\n// Get all titles first to avoid stale elements\nconst titles = []\nconst items = await driver.findElements(By.css('app-blog-list-item'))\nconsole.log(`Found ${items.length} blog items on the page`)\n\nfor (const item of items) {\n    try {\n        const title = await item.findElement(By.css('h4.font-semibold.text-24pxlh30px.font-Montserrat')).getText()\n        titles.push(title)\n        console.log(`Found title: ${title}`)\n    } catch (error) {\n        console.log(`Error getting title: ${error.message}`)\n    }\n}\n\n// Now make a single API call to get all articles\nconst apiResponse = await driver.executeScript(`\n    return fetch('https://api.volunteercentrecounty.org/web-api/article/list', {\n        method: 'POST',\n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify({\n            query: {\n                limit: \"50\",\n                offset: \"0\",\n                order: \"DESC\",\n                orderBy: \"lastRefreshed\"\n            },\n            filter: {\n                search: \"${searchTerm}\",\n                tags: null,\n                categories: null,\n                partners: []\n            }\n        })\n    })\n    .then(response => {\n        if (!response.ok) {\n            throw new Error('Network response was not ok: ' + response.status);\n        }\n        return response.json();\n    })\n    .then(data => {\n        console.log('API Response:', JSON.stringify(data, null, 2));\n        return data.data;\n    })\n    .catch(error => {\n        console.error('API Error:', error);\n        return [];\n    });\n`)\n\nconsole.log(`API returned ${apiResponse.length} articles`)\n\nconst itemData = []\nfor (const title of titles) {\n    const matchingArticle = apiResponse.find(article => \n        article.title.toLowerCase().includes(title.toLowerCase()) || \n        title.toLowerCase().includes(article.title.toLowerCase())\n    )\n    \n    if (matchingArticle) {\n        itemData.push({ \n            title: matchingArticle.title, \n            lastRefreshed: matchingArticle.lastRefreshed \n        })\n        console.log(`Matched article: ${matchingArticle.title} with lastRefreshed: ${matchingArticle.lastRefreshed}`)\n    } else {\n        console.log(`No matching article found in API for title: ${title}`)\n    }\n}\n\n// Log the results\nconsole.log('\\nSearch results sorted by lastRefreshed (DESC):')\nitemData.forEach((item, index) => {\n    console.log(`${index + 1}. Title: ${item.title}, lastRefreshed: ${item.lastRefreshed}`)\n})\n\n// Verify sorting\nfor (let i = 0; i < itemData.length - 1; i++) {\n    const currentDate = new Date(itemData[i].lastRefreshed)\n    const nextDate = new Date(itemData[i + 1].lastRefreshed)\n    assert.ok(currentDate >= nextDate, \n        `Items are not sorted correctly by lastRefreshed. ${itemData[i].title} (${itemData[i].lastRefreshed}) should come before ${itemData[i + 1].title} (${itemData[i + 1].lastRefreshed})`)\n}\n\n// Assert that we found at least one item\nassert.ok(itemData.length > 0, `No items found with \"${searchTerm}\" in title`)",
+              "err": {},
+              "uuid": "7493c15c-df35-473d-94f2-34db3051480e",
+              "parentUUID": "11e232ef-a7c8-462f-b4aa-915902f801c5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7493c15c-df35-473d-94f2-34db3051480e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9994,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "22f11397-4dd6-4085-b2ae-e1732f0fc715",
+          "title": "searchV",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchV_help.spec.js",
+          "file": "/searchV_help.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"searchV\"",
+              "fullTitle": "searchV \"before each\" hook in \"searchV\"",
+              "timedOut": false,
+              "duration": 1886,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "4deff539-3d40-48eb-a8fd-601878c1730a",
+              "parentUUID": "22f11397-4dd6-4085-b2ae-e1732f0fc715",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"searchV\"",
+              "fullTitle": "searchV \"after each\" hook in \"searchV\"",
+              "timedOut": false,
+              "duration": 177,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "38efc5b8-bf92-4dd8-8c9b-c411353c0cd0",
+              "parentUUID": "22f11397-4dd6-4085-b2ae-e1732f0fc715",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "searchV",
+              "fullTitle": "searchV searchV",
+              "timedOut": false,
+              "duration": 8449,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Make API call to verify sorting\nconst apiResponse = await axios.post('https://api.volunteercentrecounty.org/web-api/project/list', \n  {\n    filter: {\n      search: \"help\",\n      courtOrderedService: false\n    },\n    query: {\n      limit: \"50\",\n      offset: \"0\",\n      order: \"DESC\",\n      orderBy: \"updated\"\n    }\n  },\n  {\n    headers: {\n      'Accept': 'application/json, text/plain, */*',\n      'Accept-Language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7',\n      'Content-Type': 'application/json',\n      'Origin': 'https://volunteercentrecounty.org/',\n      'Referer': 'https://volunteercentrecounty.org/'\n    }\n  }\n)\n// Verify sorting in API response\nconst items = apiResponse.data.data\nlet isSorted = true\nlet previousTimestamp = null\n// Log formatted list of items\nconsole.log('\\nItems sorted by updated date (DESC):')\nitems.forEach((item, index) => {\n    console.log(`${index + 1}. Title: ${item.title}, Updated: ${item.updated}`)\n})\nfor (const item of items) {\n  const currentTimestamp = new Date(item.updated)\n  if (previousTimestamp && currentTimestamp > previousTimestamp) {\n    isSorted = false\n    break\n  }\n  previousTimestamp = currentTimestamp\n}\n// Log API results\nconsole.log(`\\nAPI Response: Found ${items.length} items`)\nconsole.log(`API Results are sorted by updated date in descending order: ${isSorted}`)\n\n// Verify sorting in UI\nawait driver.get(\"https://volunteercentrecounty.org/volunteering-opportunities\")\nawait driver.manage().window().setRect({ width: 1440, height: 900 })\nawait driver.findElement(By.xpath(\"//div/div/div/div[2]/div\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type='text'])[2]\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type='text'])[2]\")).sendKeys(\"help\")\n\n// Wait for search results to load\nawait driver.sleep(2000)\n\n// Find all h4 elements with the specified class\nconst titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n\n// Count items with \"help\" in their title\nlet helpCount = 0\nfor (const title of titles) {\n    const text = await title.getText()\n    if (text.toLowerCase().includes('help')) {\n        helpCount++\n    }\n}\n\n// Log UI results\nconsole.log(`\\nUI Results: Found ${helpCount} items with \"help\" in title`)\n\n// Assert both API and UI conditions\nassert.ok(isSorted, 'API results should be sorted by updated date in descending order')\nassert.ok(helpCount > 0, 'Should find at least one item with \"help\" in title')\nassert.ok(items.length > 0, 'API should return at least one item')",
+              "err": {},
+              "uuid": "b687d2cf-7b9f-4982-9835-fe1343e79a22",
+              "parentUUID": "22f11397-4dd6-4085-b2ae-e1732f0fc715",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b687d2cf-7b9f-4982-9835-fe1343e79a22"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8449,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "1bbe456c-4f94-4339-801a-192fb046dd93",
+          "title": "searchV",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchV_need.spec.js",
+          "file": "/searchV_need.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"searchV\"",
+              "fullTitle": "searchV \"before each\" hook in \"searchV\"",
+              "timedOut": false,
+              "duration": 1926,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "05e2448f-ffd4-4bb1-9507-7c1f98fa260a",
+              "parentUUID": "1bbe456c-4f94-4339-801a-192fb046dd93",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"searchV\"",
+              "fullTitle": "searchV \"after each\" hook in \"searchV\"",
+              "timedOut": false,
+              "duration": 123,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "493176e3-c0cd-443b-8044-7a003a7fbecb",
+              "parentUUID": "1bbe456c-4f94-4339-801a-192fb046dd93",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "searchV",
+              "fullTitle": "searchV searchV",
+              "timedOut": false,
+              "duration": 9142,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Make API call to verify sorting\nconst apiResponse = await axios.post('https://api.volunteercentrecounty.org/web-api/project/list', \n  {\n    filter: {\n      search: \"need\",\n      courtOrderedService: false\n    },\n    query: {\n      limit: \"50\",\n      offset: \"0\",\n      order: \"DESC\",\n      orderBy: \"updated\"\n    }\n  },\n  {\n    headers: {\n      'Accept': 'application/json, text/plain, */*',\n      'Accept-Language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7',\n      'Content-Type': 'application/json',\n      'Origin': 'https://volunteercentrecounty.org/',\n      'Referer': 'https://volunteercentrecounty.org/'\n    }\n  }\n)\n// Verify sorting in API response\nconst items = apiResponse.data.data\nlet isSorted = true\nlet previousTimestamp = null\n// Log formatted list of items\nconsole.log('\\nItems sorted by updated date (DESC):')\nitems.forEach((item, index) => {\n    console.log(`${index + 1}. Title: ${item.title}, Updated: ${item.updated}`)\n})\nfor (const item of items) {\n  const currentTimestamp = new Date(item.updated)\n  if (previousTimestamp && currentTimestamp > previousTimestamp) {\n    isSorted = false\n    break\n  }\n  previousTimestamp = currentTimestamp\n}\n// Log API results\nconsole.log(`\\nAPI Response: Found ${items.length} items`)\nconsole.log(`API Results are sorted by updated date in descending order: ${isSorted}`)\n\n// Verify sorting in UI\nawait driver.get(\"https://volunteercentrecounty.org/volunteering-opportunities\")\nawait driver.manage().window().setRect({ width: 1440, height: 900 })\nawait driver.findElement(By.xpath(\"//div/div/div/div[2]/div\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type='text'])[2]\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type='text'])[2]\")).sendKeys(\"need\")\n\n// Wait for search results to load\nawait driver.sleep(2000)\n\n// Find all h4 elements with the specified class\nconst titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n\n// Count items with \"need\" in their title\nlet needCount = 0\nfor (const title of titles) {\n    const text = await title.getText()\n    if (text.toLowerCase().includes('need')) {\n        needCount++\n    }\n}\n\n// Log UI results\nconsole.log(`\\nUI Results: Found ${needCount} items with \"need\" in title`)\n\n// Assert both API and UI conditions\nassert.ok(isSorted, 'API results should be sorted by updated date in descending order')\nassert.ok(needCount > 0, 'Should find at least one item with \"need\" in title')\nassert.ok(items.length > 0, 'API should return at least one item')",
+              "err": {},
+              "uuid": "6d3ef727-a84d-4497-a27f-714b4253579b",
+              "parentUUID": "1bbe456c-4f94-4339-801a-192fb046dd93",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6d3ef727-a84d-4497-a27f-714b4253579b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9142,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "d8bb29c2-7157-4693-b0bd-2597f84404e9",
+          "title": "searchV",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchV_volunteer.spec.js",
+          "file": "/searchV_volunteer.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"searchV\"",
+              "fullTitle": "searchV \"before each\" hook in \"searchV\"",
+              "timedOut": false,
+              "duration": 1714,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "077557ab-3dd8-4b38-9e14-2eb246637525",
+              "parentUUID": "d8bb29c2-7157-4693-b0bd-2597f84404e9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"searchV\"",
+              "fullTitle": "searchV \"after each\" hook in \"searchV\"",
+              "timedOut": false,
+              "duration": 120,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "90c02573-4f61-47ab-b272-ec78f728eab3",
+              "parentUUID": "d8bb29c2-7157-4693-b0bd-2597f84404e9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "searchV",
+              "fullTitle": "searchV searchV",
+              "timedOut": false,
+              "duration": 8586,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Make API call to verify sorting\nconst apiResponse = await axios.post('https://api.volunteercentrecounty.org/web-api/project/list', \n  {\n    filter: {\n      search: \"volunteer\",\n      courtOrderedService: false\n    },\n    query: {\n      limit: \"50\",\n      offset: \"0\",\n      order: \"DESC\",\n      orderBy: \"updated\"\n    }\n  },\n  {\n    headers: {\n      'Accept': 'application/json, text/plain, */*',\n      'Accept-Language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7',\n      'Content-Type': 'application/json',\n      'Origin': 'https://volunteercentrecounty.org/',\n      'Referer': 'https://volunteercentrecounty.org/'\n    }\n  }\n)\n// Verify sorting in API response\nconst items = apiResponse.data.data\nlet isSorted = true\nlet previousTimestamp = null\n// Log formatted list of items\nconsole.log('\\nItems sorted by updated date (DESC):')\nitems.forEach((item, index) => {\n    console.log(`${index + 1}. Title: ${item.title}, Updated: ${item.updated}`)\n})\nfor (const item of items) {\n  const currentTimestamp = new Date(item.updated)\n  if (previousTimestamp && currentTimestamp > previousTimestamp) {\n    isSorted = false\n    break\n  }\n  previousTimestamp = currentTimestamp\n}\n// Log API results\nconsole.log(`\\nAPI Response: Found ${items.length} items`)\nconsole.log(`API Results are sorted by updated date in descending order: ${isSorted}`)\n\n// Verify sorting in UI\nawait driver.get(\"https://volunteercentrecounty.org/volunteering-opportunities\")\nawait driver.manage().window().setRect({ width: 1440, height: 900 })\nawait driver.findElement(By.xpath(\"//div/div/div/div[2]/div\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type='text'])[2]\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type='text'])[2]\")).sendKeys(\"volunteer\")\n\n// Wait for search results to load\nawait driver.sleep(2000)\n\n// Find all h4 elements with the specified class\nconst titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n\n// Count items with \"volunteer\" in their title\nlet volunteerCount = 0\nfor (const title of titles) {\n    const text = await title.getText()\n    if (text.toLowerCase().includes('volunteer')) {\n        volunteerCount++\n    }\n}\n\n// Log UI results\nconsole.log(`\\nUI Results: Found ${volunteerCount} items with \"volunteer\" in title`)\n\n// Assert both API and UI conditions\nassert.ok(isSorted, 'API results should be sorted by updated date in descending order')\nassert.ok(volunteerCount > 0, 'Should find at least one item with \"volunteer\" in title')\nassert.ok(items.length > 0, 'API should return at least one item')",
+              "err": {},
+              "uuid": "ff78e8d2-fe8e-4622-9af4-476dc969a106",
+              "parentUUID": "d8bb29c2-7157-4693-b0bd-2597f84404e9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ff78e8d2-fe8e-4622-9af4-476dc969a106"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8586,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "801f7fb3-a768-42d8-8112-a66cf6ac7ec7",
+          "title": "searchV",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchV_volunteers.spec.js",
+          "file": "/searchV_volunteers.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"searchV\"",
+              "fullTitle": "searchV \"before each\" hook in \"searchV\"",
+              "timedOut": false,
+              "duration": 1856,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "0d850fe1-ae84-4dbe-8193-b0277c9fb598",
+              "parentUUID": "801f7fb3-a768-42d8-8112-a66cf6ac7ec7",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"searchV\"",
+              "fullTitle": "searchV \"after each\" hook in \"searchV\"",
+              "timedOut": false,
+              "duration": 112,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "f00ff5a7-0fab-4f72-8500-2f281d6fab46",
+              "parentUUID": "801f7fb3-a768-42d8-8112-a66cf6ac7ec7",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "searchV",
+              "fullTitle": "searchV searchV",
+              "timedOut": false,
+              "duration": 8740,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Make API call to verify sorting\nconst apiResponse = await axios.post('https://api.volunteercentrecounty.org/web-api/project/list', \n  {\n    filter: {\n      search: \"volunteers\",\n      courtOrderedService: false\n    },\n    query: {\n      limit: \"30\",\n      offset: \"0\",\n      order: \"DESC\",\n      orderBy: \"updated\"\n    }\n  },\n  {\n    headers: {\n      'Accept': 'application/json, text/plain, */*',\n      'Accept-Language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7',\n      'Content-Type': 'application/json',\n      'Origin': 'https://volunteercentrecounty.org',\n      'Referer': 'https://volunteercentrecounty.org/'\n    }\n  }\n)\n// Verify sorting in API response\nconst items = apiResponse.data.data\nlet isSorted = true\nlet previousTimestamp = null\n// Log formatted list of items\nconsole.log('\\nItems sorted by updated date (DESC):')\nitems.forEach((item, index) => {\n    console.log(`${index + 1}. Title: ${item.title}, Updated: ${item.updated}`)\n})\nfor (const item of items) {\n  const currentTimestamp = new Date(item.updated)\n  if (previousTimestamp && currentTimestamp > previousTimestamp) {\n    isSorted = false\n    break\n  }\n  previousTimestamp = currentTimestamp\n}\n// Log API results\nconsole.log(`\\nAPI Response: Found ${items.length} items`)\nconsole.log(`API Results are sorted by updated date in descending order: ${isSorted}`)\n\n// Verify sorting in UI\nawait driver.get(\"https://volunteercentrecounty.org/volunteering-opportunities\")\nawait driver.manage().window().setRect({ width: 1440, height: 900 })\nawait driver.findElement(By.xpath(\"//div/div/div/div[2]/div\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type='text'])[2]\")).click()\nawait driver.findElement(By.xpath(\"(//input[@type='text'])[2]\")).sendKeys(\"volunteers\")\n\n// Wait for search results to load\nawait driver.sleep(2000)\n\n// Find all h4 elements with the specified class\nconst titles = await driver.findElements(By.css('h4.font-semibold.text-24pxlh30px.h-\\\\[60px\\\\].font-Montserrat.truncate'))\n\n// Count items with \"volunteers\" in their title\nlet volunteersCount = 0\nfor (const title of titles) {\n    const text = await title.getText()\n    if (text.toLowerCase().includes('volunteers')) {\n        volunteersCount++\n    }\n}\n\n// Log UI results\nconsole.log(`\\nUI Results: Found ${volunteersCount} items with \"volunteers\" in title`)\n\n// Assert both API and UI conditions\nassert.ok(isSorted, 'API results should be sorted by updated date in descending order')\nassert.ok(volunteersCount > 0, 'Should find at least one item with \"volunteers\" in title')\nassert.ok(items.length > 0, 'API should return at least one item')",
+              "err": {},
+              "uuid": "201d883b-59f2-449d-9a9a-b8a526700454",
+              "parentUUID": "801f7fb3-a768-42d8-8112-a66cf6ac7ec7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "201d883b-59f2-449d-9a9a-b8a526700454"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8740,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "e3473d0e-3437-4640-9d2a-6655dcf7fafd",
+          "title": "SearchWH1",
+          "fullFile": "/Users/oksana.kushniaryk/Documents/SeleniumIDE/[WEB]SearchFunctionalityProd/searchWH_educator.spec.js",
+          "file": "/searchWH_educator.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SearchWH1\"",
+              "fullTitle": "SearchWH1 \"before each\" hook in \"SearchWH1\"",
+              "timedOut": false,
+              "duration": 1732,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}",
+              "err": {},
+              "uuid": "f8f283f8-82c1-4e55-ac3b-052965e4cb8f",
+              "parentUUID": "e3473d0e-3437-4640-9d2a-6655dcf7fafd",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SearchWH1\"",
+              "fullTitle": "SearchWH1 \"after each\" hook in \"SearchWH1\"",
+              "timedOut": false,
+              "duration": 143,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "30446305-3c38-4468-b1ab-002e94dad860",
+              "parentUUID": "e3473d0e-3437-4640-9d2a-6655dcf7fafd",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "SearchWH1",
+              "fullTitle": "SearchWH1 SearchWH1",
+              "timedOut": false,
+              "duration": 8441,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get(\"https://volunteercentrecounty.org/paid-job-openings\")\nawait driver.manage().window().setRect({ width: 1440, height: 900 })\n\n// Wait for the search input to be visible\nawait driver.wait(until.elementLocated(By.css(\".md\\\\3Amt-5\")), 10000)\nconst searchInput = await driver.findElement(By.css(\".md\\\\3Amt-5\"))\nawait searchInput.click()\nawait searchInput.sendKeys(\"educator\")\n\n// Wait for search results to load\nawait driver.sleep(2000)\n\ntry {\n  // Make API request to get sorted data\n  const response = await axios.get('https://api.volunteercentrecounty.org/web-api/paid-job', {\n    params: {\n      search: 'educator',\n      limit: 15,\n      offset: 0,\n      order: 'DESC',\n      orderBy: 'lastRefreshed'\n    },\n    headers: {\n      'Accept': 'application/json, text/plain, */*',\n      'Origin': 'https://volunteercentrecounty.org',\n      'Referer': 'https://volunteercentrecounty.org/'\n    }\n  })\n  const jobs = response.data.data\n  console.log(`API returned ${jobs.length} jobs`)\n  \n  const educatorItems = []\n  // Verify sorting and collect items\n  for (let i = 0; i < jobs.length; i++) {\n    const currentJob = jobs[i]\n    if (currentJob.title.toLowerCase().includes(\"educator\")) {\n      educatorItems.push({\n        title: currentJob.title,\n        lastRefreshed: currentJob.lastRefreshed\n      })\n    }\n    \n    // Verify sorting order\n    if (i < jobs.length - 1) {\n      const currentDate = new Date(currentJob.lastRefreshed)\n      const nextDate = new Date(jobs[i + 1].lastRefreshed)\n      assert(currentDate >= nextDate, \n        `Sorting order is incorrect: ${currentJob.title} (${currentJob.lastRefreshed}) should be after ${jobs[i + 1].title} (${jobs[i + 1].lastRefreshed})`)\n    }\n  }\n  \n  // Log the results\n  console.log(`\\nFound ${educatorItems.length} items containing \"educator\" (sorted by lastRefreshed DESC):`)\n  educatorItems.forEach((item, index) => {\n    console.log(`${index + 1}. ${item.title} (Last Refreshed: ${item.lastRefreshed})`)\n  })\n  \n  // Assert that we found at least one item\n  assert.ok(educatorItems.length > 0, 'No items found containing \"educator\"')\n  \n} catch (error) {\n  console.error('API Error:', error.response ? {\n    status: error.response.status,\n    data: error.response.data,\n    headers: error.response.headers\n  } : error.message)\n  throw error\n}",
+              "err": {},
+              "uuid": "a923886e-2383-4e85-8ab2-b272e77b1812",
+              "parentUUID": "e3473d0e-3437-4640-9d2a-6655dcf7fafd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a923886e-2383-4e85-8ab2-b272e77b1812"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8441,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.8.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
